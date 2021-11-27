@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'search',
@@ -7,12 +7,13 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  options = ["option.contactless", "option.withdraw", "option.deposit", "option.vault", "option.coinDeposit"];
+  options: string[];
   selectedOptions: string[];
 
-  constructor(private translate: TranslateService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getAtmOptions().subscribe(data => this.options = data);
   }
 
 }

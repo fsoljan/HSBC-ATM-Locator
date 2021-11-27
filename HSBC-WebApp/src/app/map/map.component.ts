@@ -13,7 +13,7 @@ export class MapComponent implements OnInit {
   map: Map;
 
   constructor() { }
-
+  
   ngOnInit(): void {
     this.map = new Map({
       view: new View({
