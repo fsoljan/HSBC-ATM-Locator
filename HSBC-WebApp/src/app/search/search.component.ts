@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'search',
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  options = ["Isplatni bankomat", "Uplatni bankomat", "Noćni trezor", "Kovinomat"];
+  options = ["option.contactless", "option.withdraw", "option.deposit", "option.vault", "option.coinDeposit"];
+  selectedOptions: string[];
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
   }

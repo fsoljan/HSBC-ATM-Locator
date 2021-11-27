@@ -11,6 +11,10 @@ import { MatInputModule, MatIconModule, MatSelectModule, MatCheckboxModule } fro
 import { SearchResultComponent } from './search-result/search-result.component';
 import { MapComponent } from './map/map.component';
 
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -28,9 +32,21 @@ import { MapComponent } from './map/map.component';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

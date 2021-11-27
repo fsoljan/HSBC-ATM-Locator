@@ -1,0 +1,16 @@
+{
+    "app": {
+        "address": "Adresa",
+        "option": "Opcija",
+        "currentlyOpen": "Trenutno otvoren",
+        "home": "Početna",
+        "map": "Karta"
+    },
+    "option": {
+        "contactless": "Beskontaktni",
+        "withdraw": "Podizanje gotovine",
+        "deposit": "Uplata gotovine",
+        "vault": "Dnevno-noćni trezor",
+        "coinDeposit": "Kovinomat"
+    }
+}

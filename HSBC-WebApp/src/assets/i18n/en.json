@@ -1,0 +1,16 @@
+{
+    "app": {
+        "address": "Address",
+        "option": "Option",
+        "currentlyOpen": "Currently open",
+        "home": "Home",
+        "map": "Map"
+    },
+    "option": {
+        "contactless": "Contactless",
+        "withdraw": "Withdraw money",
+        "deposit": "Deposit money",
+        "vault": "Day-night vault",
+        "coinDeposit": "Coin deposit"
+    }
+}
