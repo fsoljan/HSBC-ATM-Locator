@@ -9,13 +9,16 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule, MatIconModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { MapComponent } from './map/map.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
