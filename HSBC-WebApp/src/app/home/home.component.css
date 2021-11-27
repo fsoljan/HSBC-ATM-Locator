@@ -1,0 +1,7 @@
+.inline {
+    display: inline-block;
+}
+
+search-result {
+    width: calc(100% - 300px);
+}
