@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'HSBC WebApp';
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('hr');
+    translate.setDefaultLang('en');
   }
 
   setLang(lang: string) {

@@ -2,6 +2,18 @@
     display: inline-block;
 }
 
+.full-width {
+    width: calc(100% - 300px);
+}
+
+.item {
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    width: 100%;
+}
+
 search-result {
     width: calc(100% - 300px);
 }

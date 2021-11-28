@@ -8,7 +8,6 @@ import { SearchComponent } from './search/search.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule, MatIconModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
-import { SearchResultComponent } from './search-result/search-result.component';
 import { MapComponent } from './map/map.component';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -21,7 +20,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     AppComponent,
     HomeComponent,
     SearchComponent,
-    SearchResultComponent,
     MapComponent
   ],
   imports: [

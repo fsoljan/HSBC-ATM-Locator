@@ -6,6 +6,7 @@ import { MapComponent } from './map/map.component';
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'map', component: MapComponent},
+  { path: 'map/:id', component: MapComponent},
   { path: '**', redirectTo: '' }
 ];
 

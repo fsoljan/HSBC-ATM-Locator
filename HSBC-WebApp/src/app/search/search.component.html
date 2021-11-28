@@ -2,16 +2,16 @@
   <form class="search-form">
     <mat-form-field appearance="fill">
       <mat-label>{{"app.address" | translate}}</mat-label>
-      <input matInput>
+      <input matInput name="addressField" [(ngModel)]="searchObject.text" (input)="onSearchChange($event.target.value)">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>{{"app.option" | translate}}</mat-label>
-      <mat-select name="optionSelection" [(ngModel)]="selectedOptions" multiple>
-        <mat-option *ngFor="let option of options" [value]="option">{{option | translate}}</mat-option>
+      <mat-select name="optionSelection" [(ngModel)]="searchObject.selectedOptions" multiple>
+        <mat-option *ngFor="let option of options" [value]="option" (click)="modelChanged()">{{"option." + option | translate}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-checkbox>{{"app.currentlyOpen" | translate}}</mat-checkbox>
+    <mat-checkbox name="isOpen" [(ngModel)]="searchObject.isOpen" (ngModelChange)="modelChanged()">{{"app.currentlyOpen" | translate}}</mat-checkbox>
   </form>
 </div>

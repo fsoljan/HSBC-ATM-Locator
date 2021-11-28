@@ -1,6 +1,11 @@
-<div class="inline container">
-    <search></search>
+<div class="inline">
+    <search (searchModified)="searchModified($event)"></search>
 </div>
-<div class="inline container">
-    <search-result></search-result>
+<div class="inline full-width">
+    <div class="container">
+        <div *ngFor="let atm of filteredAtms" class="item">
+          <h6>{{atm.address}}</h6>
+          <button routerLink="/map/{{atm.id}}">Show on map</button>
+        </div>
+    </div>
 </div>

@@ -7,16 +7,19 @@ export class AtmMock {
     static getAtmMocks() {
         let midnight = new Date(1970, 0, 1);
         let am8 = new Date(1970, 0, 1, 8);
+        let pm4 = new Date(1970, 0, 1, 16);
         let pm9 = new Date(1970, 0, 1, 21);
         let pm10 = new Date(1970, 0, 1, 22);
 
         let am8pm9 = new WorkingHour(am8, pm9);
         let am8pm10 =  new WorkingHour(am8, pm10);
         let always = new WorkingHour(midnight, midnight);
+        let classic = new WorkingHour(am8, pm4);
 
         //sunday is at index 0
         let storeWorkingHour = [am8pm9, am8pm10, am8pm10, am8pm10, am8pm10, am8pm10, am8pm9];
-        let roundTheClock = [always, always, always, always, always, always, always]
+        let roundTheClock = [always, always, always, always, always, always, always];
+        let notWorkingWeekends = [undefined, classic, classic, classic, classic, classic, undefined];
 
         let standardAtm = ["withdraw"];
         let contactlessAtm = ["contactless", "withdraw"];

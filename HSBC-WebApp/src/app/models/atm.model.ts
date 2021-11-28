@@ -2,22 +2,36 @@ import { MatGridTileHeaderCssMatStyler } from "@angular/material";
 import { WorkingHour } from "./working-hour.model";
 
 export class AtmModel {
+    id: number;
     address: string;
     options: string[];
     //starting with Sunday
     workingHours: WorkingHour[];
     geoLocation: number[];
 
+    private static lastId = 0;
+
     constructor(address: string, options: string[], workingHours: WorkingHour[], latitude: number, longitude: number) {
+        this.id = this.getId();
         this.address = address;
         this.options = options;
         this.workingHours = workingHours;
         this.geoLocation = [latitude, longitude];
     }
 
+    private getId(): number {
+        return AtmModel.lastId++;
+    }
+
     isCurrentlyOpen() {
         let dateNow = new Date();
         let dayOfWeek = dateNow.getDay();
+
+        if (this.workingHours[dayOfWeek] === undefined)
+            return false;
+
+        if (this.isAlwaysOpen())
+        return true;
 
         dateNow.setFullYear(1970, 0, 1);
         
@@ -29,7 +43,7 @@ export class AtmModel {
 
     isAlwaysOpen() {
         for (let worhHour of this.workingHours){
-            if (worhHour.from.getTime() == worhHour.to.getTime())
+            if (worhHour.from.getTime() != worhHour.to.getTime())
                 return false;
         }
 

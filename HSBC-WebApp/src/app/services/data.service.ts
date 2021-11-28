@@ -7,14 +7,25 @@ import { AtmModel } from '../models/atm.model';
   providedIn: 'root'
 })
 export class DataService {
+  atms: AtmModel[];
 
   constructor() { }
 
+  getAtm(id: number) {
+    if (this.atms === undefined)
+      this.atms = AtmMock.getAtmMocks();
+
+    return of(this.atms.filter(atm => atm.id == id)[0]);
+  }
+
   getAllAtms(): Observable<AtmModel[]> {
-    return of(AtmMock.getAtmMocks());
+    if (this.atms === undefined)
+      this.atms = AtmMock.getAtmMocks();
+
+    return of(this.atms);
   }
 
   getAtmOptions(): Observable<string[]> {
-    return of(["option.contactless", "option.withdraw", "option.deposit", "option.vault", "option.coinDeposit"]);
+    return of(["contactless", "withdraw", "deposit", "vault", "coinDeposit"]);
   }
 }
