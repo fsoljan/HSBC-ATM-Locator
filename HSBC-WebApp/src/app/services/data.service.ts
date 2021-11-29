@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { AtmMock } from '../mocks/atm.mock';
 import { AtmModel } from '../models/atm.model';
 
 @Injectable({
@@ -9,23 +9,17 @@ import { AtmModel } from '../models/atm.model';
 export class DataService {
   atms: AtmModel[];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getAtm(id: number) {
-    if (this.atms === undefined)
-      this.atms = AtmMock.getAtmMocks();
-
-    return of(this.atms.filter(atm => atm.id == id)[0]);
+    return this.http.get<AtmModel[]>("/atms?id=" + id);
   }
 
   getAllAtms(): Observable<AtmModel[]> {
-    if (this.atms === undefined)
-      this.atms = AtmMock.getAtmMocks();
-
-    return of(this.atms);
+    return this.http.get<AtmModel[]>("/atms");
   }
 
   getAtmOptions(): Observable<string[]> {
-    return of(["contactless", "withdraw", "deposit", "vault", "coinDeposit"]);
+    return this.http.get<string[]>("/atmOptions");
   }
 }
