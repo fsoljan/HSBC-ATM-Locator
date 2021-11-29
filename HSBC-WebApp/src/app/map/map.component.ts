@@ -11,6 +11,7 @@ import { Feature } from 'ol';
 import { Icon, Style } from 'ol/style';
 import { fromLonLat } from 'ol/proj.js';
 import Point from 'ol/geom/Point';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -33,29 +34,28 @@ export class MapComponent implements OnInit {
           this.initMap();
         else {
           this.dataService.getAtm(this.id).subscribe(data => {
-            this.initMap(data.geoLocation[0], data.geoLocation[1], 18);
+            this.initMap(data.geoLocation, 18);
           });
         }
       });
     });
   }
 
-  initMap(x: number = 1780206, y: number = 5749983, zoom = 12) {
+  initMap(lonLat = [15.991406,45.810100], zoom = 12) {
     let vectorSource = new VectorSource({
       features: []
     });
 
     for (let atm of this.atms) {
       let atmFeature = new Feature({
-        geometry: new Point(atm.geoLocation)
+        geometry: new Point(fromLonLat(atm.geoLocation))
       });
 
       atmFeature.setStyle(new Style({
         image: new Icon(({
           color: '#8959A8',
           crossOrigin: 'anonymous',
-          src: 'assets/images/pin.png',
-          imgSize: [20, 20]
+          src: 'assets/images/pin.png'
         }))
       }));
       
@@ -68,7 +68,7 @@ export class MapComponent implements OnInit {
 
     this.map = new Map({
       view: new View({
-        center: [x, y],
+        center: fromLonLat(lonLat),
         zoom: zoom,
       }),
       layers: [

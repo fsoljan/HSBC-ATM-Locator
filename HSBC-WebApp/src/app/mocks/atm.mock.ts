@@ -27,12 +27,20 @@ export class AtmMock {
         let vault = ["vault"];
         let standardBank = ["contactless", "withdraw", "deposit"];
         let coinDeposit = ["contactless", "withdraw", "deposit", "coinDeposit"];
+        let full = ["contactless", "withdraw", "deposit", "coinDeposit", "vault"];
 
         let atms = [] as AtmModel[];
-        atms.push(new AtmModel("Dubečka bb, Okretište Dubec, Zagreb 10000", standardAtm, storeWorkingHour, 1789959.86, 5752834.40));
-        atms.push(new AtmModel("Zagrebačka 15, Sesvete 10360", coinDeposit, roundTheClock, 1793014.80, 5752734.72));
-        atms.push(new AtmModel("Dubrava 47, Zagreb 10000", standardBank, roundTheClock, 1786725.349523, 5752888.229408));
-        atms.push(new AtmModel("Slavonska avenija 11d, Zagreb 10000", standardAtm, storeWorkingHour, 1786776.446923, 5748744.1));
+        atms.push(new AtmModel("Dubečka bb, Okretište Dubec, Zagreb", standardAtm, storeWorkingHour, 16.079428, 45.828046));
+        atms.push(new AtmModel("Zagrebačka 15, Sesvete", coinDeposit, roundTheClock, 16.106851, 45.827448));
+        atms.push(new AtmModel("Dubrava 47, Zagreb", standardBank, roundTheClock, 16.050426, 45.828398));
+        atms.push(new AtmModel("Slavonska avenija 11d, Zagreb", standardAtm, storeWorkingHour, 16.050862, 45.802457));
+        atms.push(new AtmModel("Maksimirska 86-88, Zagreb", standardBank, roundTheClock, 16.007752, 45.817276));
+        atms.push(new AtmModel("Ilica 38, Zagreb", vault, roundTheClock, 15.970953, 45.813322));
+        atms.push(new AtmModel("Vlaška 106, Zagreb", full, roundTheClock, 15.994848, 45.814126));
+        atms.push(new AtmModel("Savska cesta 60, Zagreb", vault, roundTheClock, 15.960637, 45.798461));
+        atms.push(new AtmModel("Miramarska cesta 23, Zagreb", full, roundTheClock, 15.975466, 45.802093));
+        atms.push(new AtmModel("Zinke Kunc 2, Zagreb", full, roundTheClock, 15.996818, 45.792926));
+        atms.push(new AtmModel("Trg J.F.Kennedyja 6, Zagreb", contactlessAtm, roundTheClock, 16.011656, 45.816003));
 
         return atms;
     }
