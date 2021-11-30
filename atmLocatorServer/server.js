@@ -1,7 +1,10 @@
 const http = require('http');
 const url = require('url');
+
 let atms = generateAtms();
 let options = ["contactless", "withdraw", "deposit", "vault", "coinDeposit"];
+let users = [{username: "admin", password: "admin", token: "adminToken"}, 
+            {username: "user", password: "user", token: "userToken"}];
 
 http.createServer(function (req, res) {
   if (req.method == "GET") {
@@ -34,7 +37,25 @@ function handleGetReq(req, res) {
 }
 
 function handlePostReq(req, res) {
+  var body = '';
 
+  req.on('data', function (data) {
+      body += data;
+
+      if (body.length > 1e6)
+      req.connection.destroy();
+  });
+
+  req.on('end', function () {
+      var postBody = JSON.parse(body);
+
+      users.forEach(user => {
+        if(user.username == postBody.username && user.password == postBody.password)
+          return res.end(JSON.stringify(user.token));
+      })
+
+      return handleError(res, 403);
+  });
 }
 
 function handleError (res, code) { 
