@@ -48,22 +48,23 @@ function handlePostReq(req, res) {
   });
 
   req.on('end', function () {
-      var postBody = JSON.parse(body);
+    var postBody = JSON.parse(body);
 
-      if (path.pathname == '/login') {
-        users.forEach(user => {
-          if(user.username == postBody.username && user.password == postBody.password)
-            return res.end(user.token);
-        })
+    if (path.pathname == '/login') {
+      users.forEach(user => {
+        if(user.username == postBody.username && user.password == postBody.password) {
+          return res.end(JSON.stringify({token: user.token}));
+        }
+      })
 
-        console.log(path);
+      return handleError(res, 403);
+    } else if (path.pathname == '/atm') {
+      atms[postBody.id] = postBody;
 
-        return handleError(res, 403);
-      } else if (path.pathname == '/atm') {
-        atms[postBody.id] = postBody;
+      return res.end();
+    }
 
-        return res.end();
-      }
+    return handleError(res, 403);
   });
 }
 
