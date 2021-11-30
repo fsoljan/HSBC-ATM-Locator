@@ -4,7 +4,8 @@
         "option": "Option",
         "currentlyOpen": "Currently open",
         "home": "Home",
-        "map": "Map"
+        "map": "Map",
+        "workingDays": "Working days"
     },
     "option": {
         "contactless": "Contactless",
@@ -12,5 +13,9 @@
         "deposit": "Deposit money",
         "vault": "Day-night vault",
         "coinDeposit": "Coin deposit"
+    },
+    "update": {
+        "success": "Update Successfull",
+        "fail": "Update failed"
     }
 }

@@ -5,7 +5,8 @@
     <div class="container">
         <div *ngFor="let atm of filteredAtms" class="item">
           <h6>{{atm.address}}</h6>
-          <button routerLink="/map/{{atm.id}}">Show on map</button>
+          <button mat-button routerLink="/edit/{{atm.id}}">Edit</button>
+          <button mat-button routerLink="/map/{{atm.id}}">Show on map</button>
         </div>
     </div>
 </div>

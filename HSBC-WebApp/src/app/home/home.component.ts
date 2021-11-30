@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
         return false;
     }
 
-    if (this.searchObject.isOpen && !atm.isCurrentlyOpen())
+    if (this.searchObject.isOpen && !atm.isAlwaysOpen())
       return false;
 
     return true;

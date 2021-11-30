@@ -4,7 +4,8 @@
         "option": "Opcija",
         "currentlyOpen": "Trenutno otvoren",
         "home": "Početna",
-        "map": "Karta"
+        "map": "Karta",
+        "workingDays": "Radni dani"
     },
     "option": {
         "contactless": "Beskontaktni",
@@ -12,5 +13,9 @@
         "deposit": "Uplata gotovine",
         "vault": "Dnevno-noćni trezor",
         "coinDeposit": "Kovinomat"
+    },
+    "update": {
+        "success": "Uspješno ažurirano",
+        "fail": "Neuspješno ažuriranje"
     }
 }

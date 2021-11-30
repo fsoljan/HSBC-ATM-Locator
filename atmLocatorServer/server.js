@@ -37,8 +37,9 @@ function handleGetReq(req, res) {
 }
 
 function handlePostReq(req, res) {
+  let path = url.parse(req.url, true);
+  
   var body = '';
-
   req.on('data', function (data) {
       body += data;
 
@@ -49,12 +50,20 @@ function handlePostReq(req, res) {
   req.on('end', function () {
       var postBody = JSON.parse(body);
 
-      users.forEach(user => {
-        if(user.username == postBody.username && user.password == postBody.password)
-          return res.end(JSON.stringify(user.token));
-      })
+      if (path.pathname == '/login') {
+        users.forEach(user => {
+          if(user.username == postBody.username && user.password == postBody.password)
+            return res.end(user.token);
+        })
 
-      return handleError(res, 403);
+        console.log(path);
+
+        return handleError(res, 403);
+      } else if (path.pathname == '/atm') {
+        atms[postBody.id] = postBody;
+
+        return res.end();
+      }
   });
 }
 
@@ -79,6 +88,7 @@ function generateAtms() {
   let storeWorkingHour = [am8pm9, am8pm10, am8pm10, am8pm10, am8pm10, am8pm10, am8pm9];
   let roundTheClock = [always, always, always, always, always, always, always];
   let notWorkingWeekends = [undefined, classic, classic, classic, classic, classic, undefined];
+  let demoClosed = [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
 
   let standardAtm = ["withdraw"];
   let contactlessAtm = ["contactless", "withdraw"];
@@ -100,6 +110,8 @@ function generateAtms() {
   atms.push({id: 8, address: "Miramarska cesta 23, Zagreb", options: full, workingHours: roundTheClock, geoLocation: [15.975466, 45.802093]});
   atms.push({id: 9, address: "Zinke Kunc 2, Zagreb", options: full, workingHours: roundTheClock, geoLocation: [15.996818, 45.792926]});
   atms.push({id: 10, address: "Trg J.F.Kennedyja 6, Zagreb", options: contactlessAtm, workingHours: roundTheClock, geoLocation: [16.011656, 45.816003]});
+  atms.push({id: 11, address: "Radnička 26, Zagreb", options: standardBank, workingHours: demoClosed, geoLocation: [15.977823, 45.816003]});
+  atms.push({id: 12, address: "Zagrebačka 12, Zagreb", options: vault, workingHours: demoClosed, geoLocation: [15.985485, 45.823548]});
 
   return atms;
 }

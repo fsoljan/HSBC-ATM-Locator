@@ -15,7 +15,7 @@ export class AuthenticationService {
   
   login(formValue: any) {
     this.http.post<any>("/login", JSON.stringify(formValue)).subscribe(token => {
-      localStorage.setItem("token", JSON.stringify(token));
+      localStorage.setItem("token", token);
       this.router.navigate(['home']);
     });
   }

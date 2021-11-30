@@ -1,0 +1,28 @@
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>{{"app.address" | translate}}</mat-label>
+    <input matInput [(ngModel)]="atm.address">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>{{"app.option" | translate}}</mat-label>
+    <mat-select name="optionSelection" [(ngModel)]="atm.options" multiple>
+      <mat-option *ngFor="let option of atmOptions" [value]="option">{{"option." + option | translate}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <mat-label>{{"app.workingDays" | translate}}</mat-label>
+    <div *ngFor="let day of atm.workingHours">
+      <mat-label>{{"app.from" | translate}}</mat-label>
+      <input matInput [(ngModel)]="day.from">
+      <mat-label>{{"app.to" | translate}}</mat-label>
+      <input matInput [(ngModel)]="day.to">
+    </div>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>{{"app.from" | translate}}</mat-label>
+    <input matInput [(ngModel)]="atm.geoLocation[0]">
+    <mat-label>{{"app.to" | translate}}</mat-label>
+    <input matInput [(ngModel)]="atm.geoLocation[1]">
+  </mat-form-field>
+  <button mat-button (click)="submit()">Submit</button>
+</div>

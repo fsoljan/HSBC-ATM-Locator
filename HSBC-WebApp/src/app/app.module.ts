@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatCardModule, MatButtonModule } from '@angular/material';
+import { MatInputModule, MatIconModule, MatSelectModule, MatCheckboxModule, MatCardModule, MatButtonModule, MatSnackBarModule } from '@angular/material';
 import { MapComponent } from './map/map.component';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -15,6 +15,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { LoginComponent } from './login/login.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     SearchComponent,
     MapComponent,
-    LoginComponent
+    LoginComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatButtonModule,
     HttpClientModule,
+    MatSnackBarModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -46,7 +49,8 @@ import { LoginComponent } from './login/login.component';
     })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }
 

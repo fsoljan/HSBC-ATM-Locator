@@ -11,7 +11,7 @@ export class AtmModel {
 
     private static lastId = 0;
 
-    constructor(address: string, options: string[], workingHours: WorkingHour[], latitude: number, longitude: number) {
+    constructor(address = "", options = [] as string[], workingHours = [] as WorkingHour[], latitude = 0, longitude = 0) {
         this.id = this.getId();
         this.address = address;
         this.options = options;

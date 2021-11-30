@@ -10,6 +10,10 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const token = this.authenticationService.token;
         if (token) {
+            if (state.url.indexOf('/edit') == 0 && token == "userToken") {
+                return false;
+            }
+
             return true;
         }
 

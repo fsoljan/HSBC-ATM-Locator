@@ -11,14 +11,15 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  updateAtm(atm: AtmModel) {
+    return this.http.post("/atm", JSON.stringify(atm));
+  }
+
   getAtm(id: number): Observable<AtmModel> {
     return this.http.get<AtmModel>("/atms?id=" + id);
   }
 
   getAllAtms(): Observable<AtmModel[]> {
-    let headers = new HttpHeaders();
-    headers = headers.set("Authorization", "test");
-    console.log(headers);
     return this.http.get<AtmModel[]>("/atms");
   }
 

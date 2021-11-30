@@ -11,7 +11,6 @@ import { Feature } from 'ol';
 import { Icon, Style } from 'ol/style';
 import { fromLonLat } from 'ol/proj.js';
 import Point from 'ol/geom/Point';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-map',
